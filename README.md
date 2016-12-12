@@ -41,7 +41,7 @@ npm i --save material-ui-upload
 
 ``` jsx
 import React, { Component } from 'react';
-import Upload from 'material-ui-upload/Upload;
+import Upload from 'material-ui-upload/Upload';
 
 class MyComponent extends Component {
     onFileLoad = (e) => console.log(e.target.result);
