@@ -28,6 +28,7 @@ export default class Upload extends Component {
             .forEach(
                 (file) => {
                     let reader = new FileReader();
+                    reader.fileName = file.name
                     reader.onload = this.props.onFileLoad;
                     reader.readAsDataURL(file);
                 }
