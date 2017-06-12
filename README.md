@@ -44,7 +44,7 @@ import React, { Component } from 'react';
 import Upload from 'material-ui-upload/Upload';
 
 class MyComponent extends Component {
-    onFileLoad = (e) => console.log(e.target.result);
+    onFileLoad = (e, file) => console.log(e.target.result, file.name);
 
     render() {
         return (
@@ -95,7 +95,7 @@ class MyComponent extends Component {
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | fileTypeRegex | `RegExp` | `/.*/` | Regexp that matches allowed file names. |
-| onFileLoad | `function` | `(e) => undefined` | [FileReader#onload][onload] event handler. |
+| onFileLoad | `function` | `(e, file) => undefined` | [FileReader#onload][onload] event handler which receives a `FileReader` event and original file object. |
 
 ## UploadPreview
 
@@ -104,7 +104,7 @@ Upload component props can be used on this component.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | title | `string` | `''` | Title of the [Card][card]. |
-| onFileLoad | `function` | `(e) => undefined` | [FileReader#onload][onload] event handler. |
+| onFileLoad | `function` | `(e, file) => undefined` | [FileReader#onload][onload] event handler which receives a `FileReader` event and original file object. |
 | label | `string` | `Upload` | Upload button label. |
 | onChange | `function` | `(items) => undefined` | When state of the component changes(file added, removed, removed all) this function will be fired with a hash of items as argument(each item key is a sha1 of the base64 dataURI __this may change to 'hash of a file content' in the future__). |
 | initialItems | `object` | `{}` | Predefined items. |
