@@ -1,5 +1,6 @@
 node_modules
 lib
+.tern-port
 *.tgz
 /Upload*
 /index.js

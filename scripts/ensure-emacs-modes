@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+prepend_mode() {
+    case "$1" in
+        *.js)
+            head -n 1 "$1" | grep rjsx > /dev/null || {
+                sed -i '1s|^|// -*- mode: rjsx -*-\n|' "$1"
+                echo "$1"
+            }
+        ;;
+    esac
+}
+export -f prepend_mode
+
+find src -type f -name '*.js' \
+     | xargs -I{} bash -c "prepend_mode '{}'"

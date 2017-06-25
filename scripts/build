@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -z "$1" ]
+then
+    echo
+    echo "Usage: $0 <src>"
+    echo
+    exit 1
+fi 1>&2
+
+src="$1"
+
+ls $src | xargs mkdir -p
+
+find $src -type f -name '*.*' | while read source
+do
+    target=$(basename $(dirname $source))/$(basename $source)
+    case $source in
+        *.js)
+            if [[ $source != *"_test.js" ]]
+            then
+                babel $source -o $target
+            fi
+        ;;
+        *.css)
+            cp -f $source $target
+        ;;
+    esac
+done

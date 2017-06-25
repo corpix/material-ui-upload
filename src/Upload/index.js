@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
-
+// *-* mode: rjsx -*-
+import React, {Component} from 'react';
+import propTypes from 'prop-types';
+import {findDOMNode} from 'react-dom';
 import FlatButton from 'material-ui/FlatButton';
-
-import { filter } from 'lodash';
+import {filter} from 'lodash';
 
 import styles from './index.css';
 
@@ -13,12 +13,17 @@ export default class Upload extends Component {
     static defaultProps = {
         fileTypeRegex: /.*/,
         onFileLoad: (e) => undefined
-    }
+    };
+
+    static propTypes = {
+        fileTypeRegex: propTypes.object,
+        onFileLoad: propTypes.func
+    };
 
     exclusiveProps = [
         'fileTypeRegex',
         'onFileLoad'
-    ]
+    ];
 
     onInputChange = (e) => {
         filter(
@@ -32,7 +37,7 @@ export default class Upload extends Component {
                     reader.readAsDataURL(file);
                 }
             );
-    }
+    };
 
     componentDidMount() {
         findDOMNode(this.refs['file-input'])
@@ -41,7 +46,7 @@ export default class Upload extends Component {
                 this.onInputChange,
                 false
             );
-    }
+    };
 
     componentWillUnmount() {
         findDOMNode(this.refs['file-input'])
@@ -50,7 +55,7 @@ export default class Upload extends Component {
                 this.onInputChange,
                 false
             );
-    }
+    };
 
     getControlProps() {
         return Object
@@ -65,7 +70,7 @@ export default class Upload extends Component {
                 },
                 {}
             );
-    }
+    };
 
     render() {
         return (
@@ -90,6 +95,6 @@ export default class Upload extends Component {
               }
             </div>
         );
-    }
+    };
 
 }

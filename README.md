@@ -1,6 +1,8 @@
 material-ui-upload
 ----------------------
 
+[![Build Status](https://travis-ci.org/corpix/material-ui-upload.svg?branch=master)](https://travis-ci.org/corpix/material-ui-upload)
+
 Upload controls made in material-ui using [FileAPI][file-api]
 
 # Components

@@ -1,71 +1,75 @@
-import React, { Component } from 'react';
-
-import { Card, CardHeader, CardMedia, CardActions } from 'material-ui/Card';
+// *-* mode: rjsx -*-
+import React, {Component} from 'react';
+import propTypes from 'prop-types';
+import {Card, CardHeader, CardMedia, CardActions} from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import FlatButton from 'material-ui/FlatButton';
+import {SHA1} from 'jshashes';
+
 import Upload from 'material-ui-upload/Upload';
 
-import { SHA1 } from 'jshashes';
-
 import styles from './index.css';
+
 
 export default class UploadPreview extends Component {
 
     static defaultProps = {
         title: '',
         label: 'Upload',
-        fileTypeRegex: '^image.*',
-        onFileLoad: (e) => undefined,
+        fileTypeRegex: /^image.*$/,
+        onFileLoad: (e, file) => undefined,
         onChange: (items) => undefined,
         initialItems: {}
-    }
+    };
+
+    static propTypes = {
+        title: propTypes.string,
+        label: propTypes.string,
+        fileTypeRegex: propTypes.object,
+        onFileLoad: propTypes.func,
+        onChange: propTypes.func,
+        initialItems: propTypes.object
+    };
 
     control = (
         <Upload onFileLoad={this.onFileLoad}/>
-    )
+    );
 
     exclusiveProps = [
         'title',
         'children',
         'onFileLoad',
         'initialItems'
-    ]
+    ];
 
-    constructor() {
+    constructor(props) {
         super();
-        this.state = { items: {} };
-    }
+        this.state = {items: props.initialItems};
+    };
 
-    componentDidMount() {
-        this.setState({
-            items: this.props.initialItems
-        });
-    }
-
-    onFileLoad = (e) => {
+    onFileLoad = (e, file) => {
         let hash = new SHA1().hex(e.target.result);
-        let items = { ...this.state.items };
+        let items = {...this.state.items};
         items[hash] = e.target.result;
-        this.setState({ items });
+        this.setState({items});
 
-        this.props.onFileLoad(e);
+        this.props.onFileLoad(e, file);
         this.props.onChange(items);
-    }
-
+    };
 
     onRemoveAllClick = (e) => {
-        let items = { };
-        this.setState({ items });
+        let items = {};
+        this.setState({items});
         this.props.onChange(items);
-    }
+    };
 
     onRemoveClick = (key) => (e) => {
-        let items = { ...this.state.items };
+        let items = {...this.state.items};
         delete items[key];
-        this.setState({ items });
+        this.setState({items});
         this.props.onChange(items);
-    }
+    };
 
     getControlProps() {
         return Object
@@ -78,11 +82,9 @@ export default class UploadPreview extends Component {
                     acc[name] = this.props[name];
                     return acc;
                 },
-                {
-                    onFileLoad: this.onFileLoad
-                }
+                {onFileLoad: this.onFileLoad}
             );
-    }
+    };
 
     renderPreview = (key) => (
         <div key={key} className={styles.PreviewContainer}>
@@ -137,5 +139,5 @@ export default class UploadPreview extends Component {
               </CardActions>
             </Card>
         );
-    }
+    };
 }

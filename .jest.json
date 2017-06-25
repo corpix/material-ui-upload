@@ -1,0 +1,6 @@
+{
+    "testMatch": ["**/*_test.js"],
+    "transform": {
+        ".*": "./node_modules/jest-css-modules"
+    }
+}
