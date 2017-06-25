@@ -46,7 +46,7 @@ npm i --save material-ui-upload
 ## Upload
 
 ``` jsx
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Upload from 'material-ui-upload/Upload';
 
 class MyComponent extends Component {
@@ -64,7 +64,7 @@ class MyComponent extends Component {
 ## UploadPreview
 
 ``` jsx
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import UploadPreview from 'material-ui-upload/UploadPreview';
 
 class MyComponent extends Component {
@@ -75,7 +75,7 @@ class MyComponent extends Component {
         };
     }
 
-    onChange = (pictures) => this.setState({ pictures });
+    onChange = (pictures) => this.setState({pictures});
 
     render() {
         return (
