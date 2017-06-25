@@ -23,6 +23,10 @@ Upload with preview for images, based on [Card][card].
 
 ![Upload preview](screenshot-upload-preview-with-pictures.png)
 
+# Requirements
+
+- Your project should be configured to use CSS modules
+
 # Installation
 
 ``` shell
