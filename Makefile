@@ -30,4 +30,4 @@ yarn.lock $(modules): package.json
 
 .PHONY: tag
 tag:
-	git tag $(shell jq -r .version package.json)-$(shell git rev-list HEAD --count)
+	git tag $(shell jq -r .version package.json)
