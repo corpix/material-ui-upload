@@ -28,3 +28,10 @@ do
         ;;
     esac
 done
+
+cat <<EOF > index.js
+module.exports = {
+    Upload: require('./Upload'),
+    UploadPreview: require('./UploadPreview')
+};
+EOF
