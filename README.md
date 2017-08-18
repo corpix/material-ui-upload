@@ -104,6 +104,7 @@ class MyComponent extends Component {
 | ---- | ---- | ------- | ----------- |
 | fileTypeRegex | `RegExp` | `/.*/` | Regexp that matches allowed file names. |
 | onFileLoad | `function` | `(e, file) => undefined` | [FileReader#onload][onload] event handler which receives a `FileReader` event and original file object. |
+| buttonControl | `function` | `material-ui/FlatButton` | Control constructor to use as upload button. |
 
 ## UploadPreview
 

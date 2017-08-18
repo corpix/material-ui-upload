@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import propTypes from 'prop-types';
 import {findDOMNode} from 'react-dom';
 import FlatButton from 'material-ui/FlatButton';
-import {filter} from 'lodash';
+import {filter, assign} from 'lodash';
 
 import styles from './index.css';
 
@@ -12,17 +12,20 @@ export default class Upload extends Component {
 
     static defaultProps = {
         fileTypeRegex: /.*/,
-        onFileLoad: (e) => undefined
+        onFileLoad: (e) => undefined,
+        buttonControl: FlatButton
     };
 
     static propTypes = {
         fileTypeRegex: propTypes.object,
-        onFileLoad: propTypes.func
+        onFileLoad: propTypes.func,
+        buttonControl: propTypes.func
     };
 
     exclusiveProps = [
         'fileTypeRegex',
-        'onFileLoad'
+        'onFileLoad',
+        'buttonControl'
     ];
 
     onInputChange = (e) => {
@@ -73,24 +76,33 @@ export default class Upload extends Component {
     };
 
     render() {
+        console.log(assign(
+            {
+                containerElement: 'label',
+                className: styles.Control
+            },
+            this.getControlProps()
+        ));
         return (
             <div className={styles.Container}>
               {
-                  React.cloneElement(
+                  React.createElement(
+                      this.props.buttonControl,
+                      assign(
+                          {
+                              containerElement: 'label',
+                              className: styles.Control
+                          },
+                          this.getControlProps()
+                      ),
                       (
-                          <FlatButton
-                            containerElement='label'
-                            className={styles.Control}
-                            >
-                            <input
+                          <input
                               className={styles.FileInput}
                               type="file"
                               ref="file-input"
                               multiple
                               />
-                          </FlatButton>
-                      ),
-                      this.getControlProps()
+                      )
                   )
               }
             </div>

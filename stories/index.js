@@ -9,6 +9,7 @@ import {action} from '@storybook/addon-actions';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import Upload from 'material-ui-upload/Upload';
 import UploadPreview from 'material-ui-upload/UploadPreview';
 
@@ -18,9 +19,9 @@ let theme = (v) => (
     </MuiThemeProvider>
 );
 
-storiesOf('Button', module)
+storiesOf('Upload', module)
     .add(
-        'Upload',
+        'Default button',
         () => theme(
             <Upload
               label="Add"
@@ -29,7 +30,20 @@ storiesOf('Button', module)
         )
     )
     .add(
-        'UploadPreview',
+        'RaisedButton',
+        () => theme(
+            <Upload
+              label="Add"
+              onFileLoad={action('onFileLoad')}
+              buttonControl={RaisedButton}
+              />
+        )
+    )
+;
+
+storiesOf('UploadPreview', module)
+    .add(
+        'Default button',
         () => theme(
             <UploadPreview
               title="Picture"
@@ -38,4 +52,17 @@ storiesOf('Button', module)
               onChange={action('UploadPreview.onChange')}
               />
         )
-    );
+    )
+    .add(
+        'RaisedButton',
+        () => theme(
+            <UploadPreview
+              title="Picture"
+              label="Add"
+              buttonControl={RaisedButton}
+              initialItems={{}}
+              onChange={action('UploadPreview.onChange')}
+              />
+        )
+    )
+;
