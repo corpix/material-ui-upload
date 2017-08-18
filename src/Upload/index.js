@@ -76,13 +76,6 @@ export default class Upload extends Component {
     };
 
     render() {
-        console.log(assign(
-            {
-                containerElement: 'label',
-                className: styles.Control
-            },
-            this.getControlProps()
-        ));
         return (
             <div className={styles.Container}>
               {
