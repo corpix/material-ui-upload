@@ -24,9 +24,8 @@ test: $(modules) lint build
 lint:
 	$(bin)/eslint .
 
-yarn.lock $(modules): package.json
-	# Ignoring scripts to prevent recursion
-	yarn --ignore-scripts
+package-lock.json $(modules): package.json
+	npm install --ignore-scripts
 
 .PHONY: tag
 tag:
