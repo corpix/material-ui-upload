@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/corpix/material-ui-upload#readme",
   "devDependencies": {
+    "@storybook/cli": "^3.2.5",
+    "@storybook/react": "^3.2.5",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
@@ -32,6 +34,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.0.2",
+    "css-loader": "^0.28.5",
     "enzyme": "^2.9.1",
     "eslint": "^4.1.0",
     "eslint-plugin-babel": "^4.1.1",
@@ -40,7 +43,8 @@
     "jest": "^20.0.4",
     "jest-css-modules": "^1.1.0",
     "react-test-renderer": "^15.6.1",
-    "regenerator-runtime": "^0.10.5"
+    "regenerator-runtime": "^0.10.5",
+    "style-loader": "^0.18.2"
   },
   "dependencies": {
     "jshashes": "^1.0.6",

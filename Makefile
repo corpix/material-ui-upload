@@ -12,7 +12,7 @@ export PATH
 all: build
 
 .PHONY: build
-build:  $(modules) $(src)
+build: $(modules) $(src)
 	$(scripts)/ensure-emacs-modes
 	$(scripts)/build $(src)
 
@@ -30,3 +30,8 @@ package-lock.json $(modules): package.json
 .PHONY: tag
 tag:
 	git tag $(shell jq -r .version package.json)
+
+.PHONY: storybook-server
+storybook-server:
+	npm link
+	$(bin)/start-storybook -p 9001 -c .storybook

@@ -43,6 +43,8 @@ npm i --save material-ui-upload
 
 # Usage example
 
+> You could see live examples providen with storybook, just `make storybook-server` in the root of the repository.
+
 ## Upload
 
 ``` jsx
@@ -54,7 +56,7 @@ class MyComponent extends Component {
 
     render() {
         return (
-            <Upload onFileLoad={this.onFileLoad}/>
+            <Upload label="Add" onFileLoad={this.onFileLoad}/>
         );
     }
 }

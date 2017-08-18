@@ -13,5 +13,5 @@ prepend_mode() {
 }
 export -f prepend_mode
 
-find src -type f -name '*.js' \
+find src stories -type f -name '*.js' \
      | xargs -I{} bash -c "prepend_mode '{}'"
