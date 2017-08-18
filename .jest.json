@@ -1,6 +1,7 @@
 {
     "testMatch": ["**/*_test.js"],
     "transform": {
-        ".*": "./node_modules/jest-css-modules"
+        "\\.js$": "babel-jest",
+        "\\.css$": "jest-css-modules"
     }
 }
