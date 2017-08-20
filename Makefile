@@ -1,5 +1,6 @@
 .DEFAULT_GOAL := all
 
+name    := material-ui-upload
 modules := ./node_modules
 bin     := $(modules)/.bin
 src     := ./src
@@ -26,12 +27,13 @@ lint:
 
 package-lock.json $(modules): package.json
 	npm install --ignore-scripts
+	touch package-lock.json $(modules)
 
 .PHONY: tag
 tag:
 	git tag $(shell jq -r .version package.json)
 
 .PHONY: storybook-server
-storybook-server:
-	npm link
+storybook-server: build $(modules)
+	ln -s $(PWD) $(modules)/$(name)
 	$(bin)/start-storybook -p 9001 -c .storybook
