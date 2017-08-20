@@ -35,5 +35,8 @@ tag:
 
 .PHONY: storybook-server
 storybook-server: build $(modules)
-	ln -s $(PWD) $(modules)/$(name)
+	if [ ! -e $(modules)/$(name) ];          \
+	then                                     \
+		ln -s $(PWD) $(modules)/$(name); \
+	fi
 	$(bin)/start-storybook -p 9001 -c .storybook
