@@ -60,7 +60,7 @@ export default class Upload extends Component {
             );
     };
 
-    getControlProps() {
+    getButtonProps() {
         return Object
             .keys(this.props)
             .filter(
@@ -83,10 +83,9 @@ export default class Upload extends Component {
                       this.props.buttonControl,
                       assign(
                           {
-                              containerElement: 'label',
-                              className: styles.Control
+                              containerElement: 'label'
                           },
-                          this.getControlProps()
+                          this.getButtonProps()
                       ),
                       (
                           <input

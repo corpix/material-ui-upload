@@ -32,10 +32,6 @@ export default class UploadPreview extends Component {
         initialItems: propTypes.object
     };
 
-    control = (
-        <Upload onFileLoad={this.onFileLoad}/>
-    );
-
     exclusiveProps = [
         'title',
         'children',
@@ -71,7 +67,7 @@ export default class UploadPreview extends Component {
         this.props.onChange(items);
     };
 
-    getControlProps() {
+    getUploadProps() {
         return Object
             .keys(this.props)
             .filter(
@@ -109,6 +105,27 @@ export default class UploadPreview extends Component {
         </div>
     );
 
+    renderAddButton = () => (
+        React.cloneElement(
+            (<Upload onFileLoad={this.onFileLoad}/>),
+            this.getUploadProps()
+        )
+    );
+
+    renderRemoveButton = () => (
+        <FlatButton
+          label="Remove all"
+          style={
+              {
+                  visibility: Object.keys(this.state.items).length
+                      ? 'visible'
+                      : 'hidden'
+              }
+          }
+          onClick={this.onRemoveAllClick}
+          />
+    );
+
     render() {
         return (
             <Card>
@@ -118,23 +135,8 @@ export default class UploadPreview extends Component {
               </CardMedia>
               <CardActions>
                 <div className={styles.ActionsContainer}>
-                  {
-                      React.cloneElement(
-                          this.control,
-                          this.getControlProps()
-                      )
-                  }
-                  <FlatButton
-                    label="Remove all"
-                    style={
-                        {
-                            visibility: Object.keys(this.state.items).length
-                                ? 'visible'
-                                : 'hidden'
-                        }
-                    }
-                    onClick={this.onRemoveAllClick}
-                    />
+                  {this.renderAddButton()}
+                  {this.renderRemoveButton()}
                 </div>
               </CardActions>
             </Card>
