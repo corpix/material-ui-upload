@@ -106,9 +106,12 @@ export default class UploadPreview extends Component {
     );
 
     renderAddButton = () => (
-        React.cloneElement(
-            (<Upload onFileLoad={this.onFileLoad}/>),
-            this.getUploadProps()
+        React.createElement(
+            Upload,
+            {
+                onFileLoad: this.onFileLoad,
+                ...this.getUploadProps()
+            }
         )
     );
 
