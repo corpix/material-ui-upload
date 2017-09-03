@@ -110,6 +110,9 @@ export default class UploadPreview extends Component {
             Upload,
             {
                 onFileLoad: this.onFileLoad,
+                // XXX: Force re-render on items change
+                // see: https://github.com/corpix/material-ui-upload/issues/8
+                key: Object.keys(this.state.items).length,
                 ...this.getUploadProps()
             }
         )
