@@ -59,7 +59,7 @@ export default class Upload extends Component {
     render() {
         return (
             <div className={styles.Container}>
-                <this.props.buttonControl {...this.getButtonProps()}>
+                <this.props.buttonControl containerElement={'label'} {...this.getButtonProps()}>
                     <input
                         className={styles.FileInput}
                         type="file"
