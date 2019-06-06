@@ -47,6 +47,7 @@
     "style-loader": "^0.23.1"
   },
   "dependencies": {
+    "babel-loader": "^8.0.6",
     "jshashes": "^1.0.7",
     "material-ui": "^0.20.2",
     "prop-types": "^15.5.10",
