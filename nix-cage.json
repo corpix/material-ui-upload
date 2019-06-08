@@ -1,0 +1,7 @@
+{
+    "mounts": {
+        "rw": [".", "~/.emacs.d"],
+        "ro": ["~/.gitconfig"],
+        "tmpfs": ["~"]
+    }
+}
