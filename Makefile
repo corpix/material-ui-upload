@@ -33,8 +33,8 @@ package-lock.json $(modules): package.json
 tag:
 	git tag $(shell jq -r .version package.json)
 
-.PHONY: storybook-server
-storybook-server: build $(modules)
+.PHONY: server
+server: build $(modules)
 	if [ ! -e $(modules)/$(name) ];          \
 	then                                     \
 		ln -s $(PWD) $(modules)/$(name); \

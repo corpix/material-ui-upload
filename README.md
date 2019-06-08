@@ -43,7 +43,7 @@ npm i --save material-ui-upload
 
 # Usage example
 
-> You could see live examples providen with storybook, just `make storybook-server` in the root of the repository.
+> You could see live examples providen with storybook, just `make server` in the root of the repository.
 
 ## Upload
 
